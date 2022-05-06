@@ -1,8 +1,11 @@
-from flask import Flask
+from flask import Flask, request
 import json
 from feature_prep import Prepare
+from model import Model
 
 app = Flask(__name__)
+
+mod = Model()
 
 @app.route("/prepare")
 def prepare():
@@ -13,6 +16,30 @@ def prepare():
     }
     response = app.response_class(
         response=json.dumps(data),
+        status=200,
+        mimetype='application/json'
+    )
+    return response
+
+@app.route("/train")
+def train():
+    ratio = int(request.args.get("ratio"))
+    mod.train(ratio)
+    data = {
+        "msg": "Model trained."
+    }
+    response = app.response_class(
+        response=json.dumps(data),
+        status=200,
+        mimetype='application/json'
+    )
+    return response
+
+@app.route("/recommend")
+def recommend():
+    data = mod.recommend()
+    response = app.response_class(
+        response=data,
         status=200,
         mimetype='application/json'
     )
