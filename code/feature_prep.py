@@ -20,7 +20,7 @@ class Prepare():
             columns[i] = columns[i] + " " + df.iloc[0, i]
         return columns
 
-    def combine_one_row(self, df): 
+    def combine_one_row(self, df): #Combining 1 row
         columns = list(df.columns)
         for i in range(0, 53):
             if i == 0:
@@ -29,10 +29,10 @@ class Prepare():
                 columns[i] = columns[i] + " " + df.iloc[0, i]
         return columns
 
-    def getList(self, cd):
+    def getList(self, cd):  #Fetching List
         return cd[1:-1].split(',')
 
-    def format_strings(self, x):
+    def format_strings(self, x):  #Formatting String
         if '-' in x:
             return ''.join(x.split('-'))
         if x.find('/'):
