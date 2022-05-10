@@ -33,3 +33,17 @@ Endpoint | Description | Output
 `/prepare` | Prepare and process data | Processed data is saved as final.csv and metadata.csv   
 `/train` | Takes two arguments - ratio and model and trains it according to the inputs | Saves the trained model 
 `/recommend` | Music recommendations based on ratio and model | Gives out a JSON object containing the recommended audio tracks
+
+### **Output**
+
+- Flask app <br>
+![alt text](./images/output1.png?raw=True)
+
+- Prepare Features
+![alt text](./images/output2.png?raw=True)
+
+- Train Data
+![alt text](./images/output3.png?raw=True)
+
+- Recommend Songs
+![alt text](./images/output4.png?raw=True)
