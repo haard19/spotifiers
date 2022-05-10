@@ -1,26 +1,26 @@
 import pandas as pd
 import numpy as np
 
-class Prepare():
+class Prepare():    
 
-    def __init__(self):
+    def __init__(self):  #Constructor
         self.echonest = pd.read_csv('../datasets/transformed/echonest.csv')
         self.features = pd.read_csv('../datasets/transformed/features.csv')
         self.genres = pd.read_csv('../datasets/transformed/genres.csv')
         self.tracks = pd.read_csv('../datasets/transformed/tracks.csv')
 
-    def convert_to_float(self, df, columns):
+    def convert_to_float(self, df, columns):  #Float Conversion
         for i in columns:
             df[i] = df[i].astype('float')
         return df
 
-    def combine_two_rows(self, df):
+    def combine_two_rows(self, df):   #Combining 2 rows
         columns = list(df.columns)
         for i in range(0, 519):
             columns[i] = columns[i] + " " + df.iloc[0, i]
         return columns
 
-    def combine_one_row(self, df):
+    def combine_one_row(self, df): 
         columns = list(df.columns)
         for i in range(0, 53):
             if i == 0:
