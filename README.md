@@ -12,3 +12,17 @@ Machine learning models used:
 
 
 Data Link: https://os.unil.cloud.switch.ch/fma/fma_metadata.zip
+
+
+## APIs
+`/prepare`
+Prepare and process data
+Processed data is saved as final.csv and metadata.csv
+
+`/train`
+Takes two arguments - ratio and model
+Example - train KMeans model with 80% ratio:
+`/train?ratio=80&model=KMeans`
+
+`/recommend`
+Music recommendations based on ratio and model
