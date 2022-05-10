@@ -24,9 +24,10 @@ def prepare():
 @app.route("/train")
 def train():
     ratio = int(request.args.get("ratio"))
-    mod.train(ratio)
+    model = request.args.get("model")
+    mod.train(ratio, model)
     data = {
-        "msg": "Model trained."
+        "msg": f"Model ({model}) trained."
     }
     response = app.response_class(
         response=json.dumps(data),
