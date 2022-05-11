@@ -60,20 +60,20 @@ class Model:
             self.model = t
         else:
             self.model = Birch(n_clusters = 6)
-            mini = self.model
+            mini = self.model 
             if "label" in self.X.columns:
                 self.X.drop('label', axis=1, inplace=True)
-            split = self.X.shape[0]//3
-            part_1, part_2, part_3 = self.X.iloc[0: split], self.X.iloc[split:split*2], self.X.iloc[split*2:split*3]
+            split = self.X.shape[0]//3 # shape of the data frame
+            part_1, part_2, part_3 = self.X.iloc[0: split], self.X.iloc[split:split*2], self.X.iloc[split*2:split*3]#dividing into three parts for fitting the model
             for i in [part_1, part_2, part_3]:
                 t = self.fit(i, mini)
                 mini = t[1]
                 i = t[0]
-            self.X = pd.concat([part_1, part_2, part_3])
+            self.X = pd.concat([part_1, part_2, part_3])#grouping all parts together after fitting
             self.model = t
         
 
-    def recommend(self):
+    def recommend(self):# recommends the music data
         recommendations = self.predict(self.model, self.Y)
         output = self.getData(recommendations, self.metadata, self.Y)
         genre_recommend, artist_name_recommend, mixed_recommend = output[0], output[1], output[2]
