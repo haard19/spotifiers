@@ -11,7 +11,16 @@
 To build music recommendation system based on user's music taste - recommendations based on genre, artists and audio features   
 
 ### **Steps**: <br>
-Data analysis - we are using albums, artists, genres, audio features and tracks to process the data and using feature engineering to transform the raw data.   
+1. First, the environment needs to be initiated using the following command <br>
+```pip install -r requirements.txt```
+2. Run the Flask python app <br>
+```python main.py```
+3. Now hit the following API to firstly prepare the data <br>
+```http://127.0.0.1:5000/prepare```
+4. To train the data with one of the 3 models hit <br>
+```http://127.0.0.1:5000/train?ratio=80&model=MiniBatchKMeans``` 
+5. Finally songs are recommended using the trained model <br>
+```http://127.0.0.1:5000/recommend```
 
 ### **Machine learning models used**:<br>   
 - **K means algorithm**: 
